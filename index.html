@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحتي الرئيسية | Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* تعريف متغيرات الألوان للوضع الفاتح والداكن */
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #0f172a;
+            --text-muted: #64748b;
+            --accent-color: #3b82f6;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-color: #3b82f6;
+            --border-color: #334155;
+            --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: var(--transition);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* زر تغيير الوضع (نايت مود) */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 10px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-color);
+        }
+
+        /* حاوية المحتوى الرئيسي */
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* شبكة الأيقونات والكروت */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 10px;
+        }
+
+        /* تصميم كارت الموقع */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* تأثير الحركة عند تمرير الماوس فوق الكارت */
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        /* تصميم الأيقونة داخل الكارت */
+        .card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .card:hover i {
+            transform: scale(1.1);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+        <i class="fas fa-moon" id="themeIcon"></i>
+        <span id="themeText">الوضع الداكن</span>
+    </button>
+
+    <div class="container">
+        <header>
+            <h1>مساحة العمل الخاصة بي</h1>
+            <p>جميع المواقع والأدوات التي أحتاجها في مكان واحد</p>
+        </header>
+
+        <div class="grid">
+
+            <a href="ضع_الرابط_هنا" target="_blank" class="card">
+                <i class="fas fa-globe"></i> <h3>اسم الموقع الأول</h3>
+                <p>وصف مختصر جداً أو رابط سريع</p>
+            </a>
+
+            <a href="ضع_الرابط_هنا" target="_blank" class="card">
+                <i class="fas fa-briefcase"></i>
+                <h3>اسم الموقع الثاني</h3>
+                <p>وصف مختصر جداً أو رابط سريع</p>
+            </a>
+
+            <a href="ضع_الرابط_هنا" target="_blank" class="card">
+                <i class="fas fa-code"></i>
+                <h3>اسم الموقع الثالث</h3>
+                <p>وصف مختصر جداً أو رابط سريع</p>
+            </a>
+
+            <a href="ضع_الرابط_هنا" target="_blank" class="card">
+                <i class="fas fa-envelope"></i>
+                <h3>اسم الموقع الرابع</h3>
+                <p>وصف مختصر جداً أو رابط سريع</p>
+            </a>
+
+            <a href="ضع_الرابط_هنا" target="_blank" class="card">
+                <i class="fas fa-chart-pie"></i>
+                <h3>اسم الموقع الخامس</h3>
+                <p>وصف مختصر جداً أو رابط سريع</p>
+            </a>
+
+            <a href="ضع_الرابط_هنا" target="_blank" class="card">
+                <i class="fas fa-cog"></i>
+                <h3>اسم الموقع السادس</h3>
+                <p>وصف مختصر جداً أو رابط سريع</p>
+            </a>
+
+        </div>
+    </div>
+
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+
+        // التحقق من وجود خيار مستخدم سابق في المتصفح
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        updateToggleComponents(currentTheme);
+
+        function toggleTheme() {
+            let theme = document.documentElement.getAttribute('data-theme');
+            let newTheme = (theme === 'dark') ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateToggleComponents(newTheme);
+        }
+
+        function updateToggleComponents(theme) {
+            if (theme === 'dark') {
+                themeIcon.className = 'fas fa-sun';
+                themeText.innerText = 'الوضع الفاتح';
+            } else {
+                themeIcon.className = 'fas fa-moon';
+                themeText.innerText = 'الوضع الداكن';
+            }
+        }
+    </script>
+</body>
+</html>
